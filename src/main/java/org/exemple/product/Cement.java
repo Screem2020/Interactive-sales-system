@@ -1,21 +1,17 @@
 package org.exemple.product;
 
 
-public class Cement implements Idiscount{
-    private int price;
+import org.exemple.Idiscount;
+
+public class Cement implements Idiscount {
     private int weight;
 
-    public Cement(int price, int weight) {
-        this.price = price;
+    public int price() {
+        return VALUE_PRICE * this.weight;
+    }
+
+    public Cement(int weight) {
         this.weight = weight;
-    }
-
-    public int getPrice() {
-        return price;
-    }
-
-    public void setPrice(int price) {
-        this.price = price;
     }
 
     public int getWeight() {
@@ -26,16 +22,9 @@ public class Cement implements Idiscount{
         this.weight = weight;
     }
 
-    public int discount() {
-        setPrice((Idiscount.VALUE_DISCOUNT * 500) / 100);
-        return this.price;
-    }
-
-    @Override
-    public String toString() {
-        return "Cement{" +
-                "price=" + price +
-                ", weight=" + weight +
-                '}';
-    }
+//    public int discount() {
+//        this.priceWithDiscount = price() - (VALUE_DISCOUNT * price()) / 100;
+//        return priceWithDiscount;
+//    }
 }
+
