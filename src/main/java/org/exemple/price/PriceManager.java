@@ -10,20 +10,34 @@ public class PriceManager implements Idiscount {
 
     private List<Integer> listPrice = new ArrayList<>();
 
-    public List<Integer> getPriceForList(List<Cement> listCement) {
-        int priceWithoutDiscount = (listCement.getFirst().getWeight() / VALUE_PACKAGING_CEMENT) * VALUE_PRICE_CEMENT;         //цена без скидки           (вес /50 - фасовка цемента)  * 500 - цена за 50кг
-        listPrice.add(priceWithoutDiscount - (dinamicDiscount() * (priceWithoutDiscount / 100)));
+    public List<Integer> getPriceForList(List<Cement> listProduct) {
+        int priceWithoutDiscount;
+        for (Cement cement : listProduct) {
+            priceWithoutDiscount = (cement.getWeight() / VALUE_PACKAGING_CEMENT) * VALUE_PRICE_CEMENT;
+            int priceWithDiscount = priceWithoutDiscount - (dinamicDiscount() * (priceWithoutDiscount / 100));
+            if (priceWithDiscount < VALUE_PRICE_CEMENT) {
+                listPrice.add(priceWithDiscount);
+            }else {
+                listPrice.add(priceWithoutDiscount);
+            }
+        }
         return listPrice;
     }
 
     @Override
     public int dinamicDiscount() {
-        if (listPrice.isEmpty()) {
-            listPrice.add(VALUE_DISCOUNT);
-        } else {
-            listPrice.add(VALUE_DISCOUNT - 5 * listPrice.size());
+        if (VALUE_DISCOUNT > 0) {
+            try {
+                if (listPrice.isEmpty()) {
+                    return VALUE_DISCOUNT;
+                } else if (VALUE_DISCOUNT >= 5) {
+                    return VALUE_DISCOUNT - 5 * listPrice.size();
+                } else throw new IllegalArgumentException();
+            } catch (IllegalArgumentException e) {
+                throw new IllegalArgumentException("Incorrect discount step");
+            }
         }
-        return listPrice.getLast();
+        return 0;
     }
 
     @Override

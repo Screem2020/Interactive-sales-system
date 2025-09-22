@@ -1,6 +1,5 @@
 package org.exemple.product;
 
-import org.exemple.price.PriceManager;
 
 public class Cement {
     private int weight;
