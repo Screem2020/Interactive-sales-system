@@ -1,6 +1,6 @@
-package org.exemple.orders;
+package org.example.orders;
 
-import org.exemple.сustomer.Customer;
+import org.example.сustomer.Customer;
 
 import java.util.ArrayList;
 import java.util.List;

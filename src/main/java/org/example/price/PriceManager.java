@@ -1,7 +1,7 @@
-package org.exemple.price;
+package org.example.price;
 
-import org.exemple.Idiscount;
-import org.exemple.product.Cement;
+import org.example.Idiscount;
+import org.example.product.Cement;
 
 import java.util.ArrayList;
 import java.util.List;

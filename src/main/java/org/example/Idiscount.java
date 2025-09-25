@@ -1,4 +1,4 @@
-package org.exemple;
+package org.example;
 
 public interface Idiscount {
     int VALUE_DISCOUNT = 10;

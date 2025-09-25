@@ -1,4 +1,4 @@
-package org.exemple.сustomer;
+package org.example.сustomer;
 
 import java.util.Date;
 

@@ -1,4 +1,4 @@
-package org.exemple.product;
+package org.example.product;
 
 
 public class Cement {
