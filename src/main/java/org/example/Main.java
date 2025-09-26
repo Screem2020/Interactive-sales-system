@@ -1,5 +1,6 @@
 package org.example;
 
+import org.example.service.InlineRepresentationOrder;
 import org.example.service.ReadFile;
 
 import java.util.ArrayList;
@@ -21,10 +22,9 @@ public class Main {
 //        System.out.println(priceForList);
 
         ReadFile readFile = new ReadFile();
+        InlineRepresentationOrder inlineRepresentationOrder = new InlineRepresentationOrder();
         List<String> strings = readFile.readFileForBase();
-        int index = -1;
-        while (++index < strings.size()) {
-            System.out.print(strings.get(index));
-        }
+        inlineRepresentationOrder.representationString(strings);
+
     }
 }
