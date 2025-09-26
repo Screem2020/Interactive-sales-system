@@ -1,30 +1,23 @@
 package org.example;
 
-import org.example.service.InlineRepresentationOrder;
+import org.example.price.PriceManager;
+import org.example.service.ParseStringOrder;
 import org.example.service.ReadFile;
+import org.example.сustomer.Customer;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Iterator;
-import java.util.List;
+import java.util.*;
 
 public class Main {
     public static void main(String[] args) {
-//        PriceManager priceManager = new PriceManager();
-//        ArrayList<Cement> listCement = new ArrayList<>();
-//        Cement cement = new Cement(50);
-//        Cement cement2 = new Cement(50);
-//        Cement cement3 = new Cement(50);
-//        listCement.add(cement);
-//        listCement.add(cement2);
-//        listCement.add(cement3);
-//        List<Integer> priceForList = priceManager.getPriceForList(listCement);
-//        System.out.println(priceForList);
-
         ReadFile readFile = new ReadFile();
-        InlineRepresentationOrder inlineRepresentationOrder = new InlineRepresentationOrder();
+        ParseStringOrder parseStringOrder = new ParseStringOrder();
         List<String> strings = readFile.readFileForBase();
-        inlineRepresentationOrder.representationString(strings);
+        ArrayList<Customer> listCustomer = new ArrayList<>();
+        for (String s : strings) {
+            listCustomer.add(parseStringOrder.OrderParsing(s));
+        }
+        PriceManager priceManager = new PriceManager();
+        System.out.println(priceManager.getPriceForList(listCustomer) + "\n");
 
     }
 }

@@ -1,15 +1,27 @@
 package org.example.сustomer;
 
-import java.util.Date;
-
 public class Customer {
-    private Date time;
     private String nameCompany;
     private int wight;
 
-    public Customer(Date time, String nameCompany, int wight) {
-        this.time = time;
+    public Customer(String nameCompany, int wight) {
         this.nameCompany = nameCompany;
         this.wight = wight;
+    }
+
+    public String getNameCompany() {
+        return nameCompany;
+    }
+
+    public int getWight() {
+        return wight;
+    }
+
+    @Override
+    public String toString() {
+        return "Customer{" +
+                "nameCompany='" + nameCompany + '\'' +
+                ", wight=" + wight +
+                '}';
     }
 }

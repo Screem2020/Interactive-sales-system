@@ -1,24 +1,25 @@
 package org.example.price;
 
-import org.example.Idiscount;
+import org.example.discunter;
 import org.example.product.Cement;
+import org.example.сustomer.Customer;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class PriceManager implements Idiscount {
+public class PriceManager implements discunter {
 
-    private List<Integer> listPrice = new ArrayList<>();
+    private List<String> listPrice = new ArrayList<>();
 
-    public List<Integer> getPriceForList(List<Cement> listProduct) {
+    public List<String> getPriceForList(List<Customer> listProduct) {
         int priceWithoutDiscount;
-        for (Cement cement : listProduct) {
-            priceWithoutDiscount = (cement.getWeight() / VALUE_PACKAGING_CEMENT) * VALUE_PRICE_CEMENT;
+        for (Customer customer : listProduct) {
+            priceWithoutDiscount = (customer.getWight() / VALUE_PACKAGING_CEMENT) * VALUE_PRICE_CEMENT;
             int priceWithDiscount = priceWithoutDiscount - (dinamicDiscount() * (priceWithoutDiscount / 100));
             if (priceWithDiscount < VALUE_PRICE_CEMENT) {
-                listPrice.add(priceWithDiscount);
+                listPrice.add(customer.getNameCompany() + "  " + priceWithDiscount);
             }else {
-                listPrice.add(priceWithoutDiscount);
+                listPrice.add(customer.getNameCompany() + " " + priceWithoutDiscount);
             }
         }
         return listPrice;
