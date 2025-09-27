@@ -1,17 +1,15 @@
-package org.example;
+package org.example.orders;
 
-import org.example.orders.OrdersBase;
 import org.example.price.PriceManager;
 import org.example.report.ByerWithReport;
 import org.example.service.ParseStringOrder;
 import org.example.service.ReadFile;
 import org.example.service.WriteFile;
 import org.example.сustomer.Customer;
+import java.util.List;
 
-import java.util.*;
-
-public class Main {
-    public static void main(String[] args) {
+public class OrderManager {
+    public void orderManager() {
         ReadFile readFile = new ReadFile();
         ParseStringOrder parseStringOrder = new ParseStringOrder();
         List<String> strings = readFile.readFileForBase();

@@ -1,20 +1,30 @@
 package org.example.service;
 
+import org.example.report.ByerWithReport;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.List;
 
 public class WriteFile {
 
-    public void writeFileForBase(List<String> customer) {
-//       File file = new File("src/main/java/org/example/service/discount_day.txt");
-//        try {
-//            FileWriter fileWriter = new FileWriter(file);
-//            BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
-//            bufferedWriter.write(time);
-//            bufferedWriter.newLine();
-//            bufferedWriter.write(nameCompany);
-//            bufferedWriter.newLine();
-//            bufferedWriter.write(wight);
-//        } catch (IOException e) {
-//            throw new RuntimeException(e);
+    public void writeFileForBase(List<ByerWithReport> customerList) {
+        File file = new File("src/main/java/org/example/service/discount_order_customer.txt");
+        try {
+            FileWriter fileWriter = new FileWriter(file);
+            BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
+            for (ByerWithReport byerWithReport : customerList) {
+                bufferedWriter.write(byerWithReport.getNameCompany());
+                bufferedWriter.write("|");
+                bufferedWriter.write(String.valueOf(byerWithReport.getPrice()));
+                bufferedWriter.newLine();
+            }
+            bufferedWriter.flush();
+            bufferedWriter.close();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
     }
+}
+

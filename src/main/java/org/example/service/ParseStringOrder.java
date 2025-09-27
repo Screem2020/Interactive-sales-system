@@ -1,10 +1,13 @@
 package org.example.service;
 
+import org.example.price.PriceManager;
 import org.example.сustomer.Customer;
 
 public class ParseStringOrder {
 
     public Customer OrderParsing(String order) {
+        PriceManager priceManager = new PriceManager();
+//        priceManager.getPriceForList()
         String nameCompany = "";
         int wight = 0;
         String[] split = order.split("\\|");

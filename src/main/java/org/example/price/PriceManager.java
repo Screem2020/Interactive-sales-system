@@ -1,25 +1,34 @@
 package org.example.price;
 
-import org.example.discunter;
-import org.example.product.Cement;
+import org.example.Discounter;
+import org.example.report.ByerWithReport;
 import org.example.сustomer.Customer;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class PriceManager implements discunter {
+public class PriceManager implements Discounter {
 
-    private List<String> listPrice = new ArrayList<>();
+    private List<ByerWithReport> listPrice = new ArrayList<>();
 
-    public List<String> getPriceForList(List<Customer> listProduct) {
+    public List<ByerWithReport> getPriceForList(List<Customer> listProduct) {
         int priceWithoutDiscount;
+        ByerWithReport byerWithReport = null;
         for (Customer customer : listProduct) {
-            priceWithoutDiscount = (customer.getWight() / VALUE_PACKAGING_CEMENT) * VALUE_PRICE_CEMENT;
-            int priceWithDiscount = priceWithoutDiscount - (dinamicDiscount() * (priceWithoutDiscount / 100));
-            if (priceWithDiscount < VALUE_PRICE_CEMENT) {
-                listPrice.add(customer.getNameCompany() + "  " + priceWithDiscount);
-            }else {
-                listPrice.add(customer.getNameCompany() + " " + priceWithoutDiscount);
+            try {
+                if (customer.getWight() < 50) {
+                    throw new IllegalArgumentException("Incorrect volume of cement wight");
+                }
+                priceWithoutDiscount = (customer.getWight() / VALUE_PACKAGING_CEMENT) * VALUE_PRICE_CEMENT;
+                int priceWithDiscount = priceWithoutDiscount - (dinamicDiscount() * (priceWithoutDiscount / 100));
+                if (priceWithDiscount > VALUE_PRICE_CEMENT) {
+                     byerWithReport = new ByerWithReport(customer.getNameCompany(), (priceWithDiscount));
+                    listPrice.add(byerWithReport);
+                    } else {
+                        listPrice.add(byerWithReport);
+                    }
+            } catch (RuntimeException e) {
+                System.err.println(e + " (" + customer.getNameCompany() + " " + customer.getWight() + ")");
             }
         }
         return listPrice;
@@ -48,3 +57,4 @@ public class PriceManager implements discunter {
                 '}';
     }
 }
+

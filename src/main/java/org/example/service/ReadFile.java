@@ -12,12 +12,12 @@ public class ReadFile {
         File file = new File("src/main/java/org/example/service/discount_day.txt");
         FileReader fileReader = null;
         try {
-            String s = "";
+            String stringLine = "";
             fileReader = new FileReader(file);
-            BufferedReader bf = new BufferedReader(fileReader);
-            while (bf.ready()) {
-                s = bf.readLine();
-                arrList.add(s);
+            BufferedReader br = new BufferedReader(fileReader);
+            while (br.ready()) {
+                stringLine = br.readLine();
+                arrList.add(stringLine);
             }
             return arrList;
         } catch (IOException e) {
@@ -30,5 +30,6 @@ public class ReadFile {
                 throw new RuntimeException(e);
             }
         }
+
     }
 }
