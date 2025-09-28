@@ -1,4 +1,4 @@
-package org.example.service;
+package org.example.io;
 
 import org.example.report.ByerWithReport;
 import java.io.BufferedWriter;
@@ -10,7 +10,7 @@ import java.util.List;
 public class WriteFile {
 
     public void writeFileForBase(List<ByerWithReport> customerList) {
-        File file = new File("src/main/java/org/example/service/discount_order_customer.txt");
+        File file = new File("src/main/java/org/example/base/discount_order_customer.txt");
         try {
             FileWriter fileWriter = new FileWriter(file);
             BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);

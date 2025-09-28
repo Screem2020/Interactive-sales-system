@@ -2,25 +2,22 @@ package org.example.orders;
 
 import org.example.price.PriceManager;
 import org.example.report.ByerWithReport;
-import org.example.service.ParseStringOrder;
-import org.example.service.ReadFile;
-import org.example.service.WriteFile;
+import org.example.parseStringForBase.ParseStringOrder;
+import org.example.io.ReadFile;
+import org.example.io.WriteFile;
 import org.example.сustomer.Customer;
 import java.util.List;
 
 public class OrderManager {
     public void orderManager() {
         ReadFile readFile = new ReadFile();
-        ParseStringOrder parseStringOrder = new ParseStringOrder();
-        List<String> strings = readFile.readFileForBase();
-        OrdersBase ordersBase = new OrdersBase();
-        List<Customer> arrayListCustomers = ordersBase.getArrayListCustomers();
-        for (String customer : strings) {
-            arrayListCustomers.add(parseStringOrder.OrderParsing(customer));
-        }
         PriceManager priceManager = new PriceManager();
-        List<ByerWithReport> priceForList = priceManager.getPriceForList(arrayListCustomers);
+        ParseStringOrder parseStringOrder = new ParseStringOrder();
         WriteFile writeFile = new WriteFile();
+
+        List<String> strings = readFile.readFileForBase();
+        List<Customer> customers = parseStringOrder.OrderParsing(strings);
+        List<ByerWithReport> priceForList = priceManager.getPriceForList(customers);
         writeFile.writeFileForBase(priceForList);
     }
 }

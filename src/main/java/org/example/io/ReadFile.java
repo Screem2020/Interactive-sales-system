@@ -1,4 +1,4 @@
-package org.example.service;
+package org.example.io;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -9,7 +9,7 @@ public class ReadFile {
     private List<String> arrList = new ArrayList<>();
 
     public List<String> readFileForBase() {
-        File file = new File("src/main/java/org/example/service/discount_day.txt");
+        File file = new File("src/main/java/org/example/base/discount_day.txt");
         FileReader fileReader = null;
         try {
             String stringLine = "";

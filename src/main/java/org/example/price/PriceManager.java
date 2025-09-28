@@ -3,7 +3,6 @@ package org.example.price;
 import org.example.Discounter;
 import org.example.report.ByerWithReport;
 import org.example.сustomer.Customer;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -34,7 +33,6 @@ public class PriceManager implements Discounter {
         return listPrice;
     }
 
-    @Override
     public int dinamicDiscount() {
         if (VALUE_DISCOUNT > 0) {
             try {

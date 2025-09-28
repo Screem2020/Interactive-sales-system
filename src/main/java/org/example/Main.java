@@ -1,28 +1,9 @@
 package org.example;
 
-import org.example.orders.OrdersBase;
-import org.example.price.PriceManager;
-import org.example.report.ByerWithReport;
-import org.example.service.ParseStringOrder;
-import org.example.service.ReadFile;
-import org.example.service.WriteFile;
-import org.example.сustomer.Customer;
-
-import java.util.*;
+import org.example.orders.OrderManager;
 
 public class Main {
     public static void main(String[] args) {
-        ReadFile readFile = new ReadFile();
-        ParseStringOrder parseStringOrder = new ParseStringOrder();
-        List<String> strings = readFile.readFileForBase();
-        OrdersBase ordersBase = new OrdersBase();
-        List<Customer> arrayListCustomers = ordersBase.getArrayListCustomers();
-        for (String customer : strings) {
-            arrayListCustomers.add(parseStringOrder.OrderParsing(customer));
-        }
-        PriceManager priceManager = new PriceManager();
-        List<ByerWithReport> priceForList = priceManager.getPriceForList(arrayListCustomers);
-        WriteFile writeFile = new WriteFile();
-        writeFile.writeFileForBase(priceForList);
+       new OrderManager().orderManager();
     }
 }
