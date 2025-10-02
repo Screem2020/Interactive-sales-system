@@ -1,14 +1,16 @@
 package org.example.price;
 
-import org.example.Discounter;
 import org.example.report.ByerWithReport;
 import org.example.сustomer.Customer;
 import java.util.ArrayList;
 import java.util.List;
 
-public class PriceManager implements Discounter {
+public class PriceManager {
 
     private List<ByerWithReport> listPrice = new ArrayList<>();
+    private static int VALUE_PRICE_CEMENT = 500;
+    private static int VALUE_DISCOUNT = 50;
+    private static int VALUE_PACKAGING_CEMENT = 50;
 
     public List<ByerWithReport> getPriceForList(List<Customer> listProduct) {
         int priceWithoutDiscount;
