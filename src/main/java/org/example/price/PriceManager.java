@@ -1,20 +1,20 @@
 package org.example.price;
 
-import org.example.report.ByerWithReport;
+import org.example.report.OrderReport;
 import org.example.сustomer.Customer;
 import java.util.ArrayList;
 import java.util.List;
 
 public class PriceManager {
 
-    private List<ByerWithReport> listPrice = new ArrayList<>();
-    private static int VALUE_PRICE_CEMENT = 500;
-    private static int VALUE_DISCOUNT = 50;
-    private static int VALUE_PACKAGING_CEMENT = 50;
+    private List<OrderReport> listPrice = new ArrayList<>();
+    private static final int VALUE_PRICE_CEMENT = 500;
+    private static final int VALUE_DISCOUNT = 50;
+    private static final int VALUE_PACKAGING_CEMENT = 50;
 
-    public List<ByerWithReport> getPriceForList(List<Customer> listProduct) {
+    public List<OrderReport> getPriceForList(List<Customer> listProduct) {
         int priceWithoutDiscount;
-        ByerWithReport byerWithReport = null;
+        OrderReport orderReport = null;
         for (Customer customer : listProduct) {
             try {
                 if (customer.getWight() < 50) {
@@ -23,13 +23,13 @@ public class PriceManager {
                 priceWithoutDiscount = (customer.getWight() / VALUE_PACKAGING_CEMENT) * VALUE_PRICE_CEMENT;
                 int priceWithDiscount = priceWithoutDiscount - (dinamicDiscount() * (priceWithoutDiscount / 100));
                 if (priceWithDiscount > VALUE_PRICE_CEMENT) {
-                     byerWithReport = new ByerWithReport(customer.getNameCompany(), (priceWithDiscount));
-                    listPrice.add(byerWithReport);
+                     orderReport = new OrderReport(customer.getNameCompany(), (priceWithDiscount));
+                    listPrice.add(orderReport);
                     } else {
-                        listPrice.add(byerWithReport);
+                        listPrice.add(orderReport);
                     }
             } catch (RuntimeException e) {
-                System.err.println(e + " (" + customer.getNameCompany() + " " + customer.getWight() + ")");
+                e.fillInStackTrace();
             }
         }
         return listPrice;

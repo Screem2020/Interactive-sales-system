@@ -1,12 +1,13 @@
 Recovery|56500
 Power Engineer|95975
 Preparatory|128400
-Fossil|127400
-Mosque|231700
-Atomic|93750
-Electricity|29200
-Industrial|74800
-Carryover|266850
-Resident|53200
-Ancillary|300000
-Power Engineer|258300
+Pyramid|65650
+Fossil|137200
+Mosque|248250
+Atomic|100000
+Electricity|31025
+Industrial|79200
+Carryover|281675
+Resident|56000
+Ancillary|315000
+Power Engineer|270600

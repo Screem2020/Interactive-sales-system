@@ -1,15 +1,14 @@
 package org.example.io;
 
-import org.example.report.ByerWithReport;
+import org.example.report.OrderReport;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
 public class IoLines {
 
-    private List<String> arrList = new ArrayList<>();
-
     public List<String> readFileForBase() {
+        List<String> arrList = new ArrayList<>();
         File file = new File("src/main/java/org/example/base/discount_day.txt");
         try(FileReader fileReader = new FileReader(file);
             BufferedReader br = new BufferedReader(fileReader)) {
@@ -24,14 +23,14 @@ public class IoLines {
         }
     }
 
-    public void writeFileForBase(List<ByerWithReport> customerList) {
+    public void writeFileForBase(List<OrderReport> customerList) {
         File file = new File("src/main/java/org/example/base/discount_order_customer.txt");
         try (FileWriter fileWriter = new FileWriter(file);
              BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);) {
-            for (ByerWithReport byerWithReport : customerList) {
-                bufferedWriter.write(byerWithReport.getNameCompany());
+            for (OrderReport orderReport : customerList) {
+                bufferedWriter.write(orderReport.getNameCompany());
                 bufferedWriter.write("|");
-                bufferedWriter.write(String.valueOf(byerWithReport.getPrice()));
+                bufferedWriter.write(String.valueOf(orderReport.getPrice()));
                 bufferedWriter.newLine();
             }
             bufferedWriter.flush();

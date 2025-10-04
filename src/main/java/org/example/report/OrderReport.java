@@ -1,11 +1,11 @@
 package org.example.report;
 
-public class ByerWithReport {
+public class OrderReport {
 
     private String nameCompany;
     private int price;
 
-    public ByerWithReport(String nameCompany, int price) {
+    public OrderReport(String nameCompany, int price) {
         this.nameCompany = nameCompany;
         this.price = price;
     }

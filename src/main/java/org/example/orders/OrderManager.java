@@ -1,8 +1,8 @@
 package org.example.orders;
 
 import org.example.price.PriceManager;
-import org.example.report.ByerWithReport;
-import org.example.parseStringForBase.ParseStringOrder;
+import org.example.report.OrderReport;
+import org.example.parseStringForBase.OrderParser;
 import org.example.io.IoLines;
 import org.example.сustomer.Customer;
 import java.util.List;
@@ -11,11 +11,11 @@ public class OrderManager {
     public void orderManager() {
         IoLines IoLines = new IoLines();
         PriceManager priceManager = new PriceManager();
-        ParseStringOrder parseStringOrder = new ParseStringOrder();
+        OrderParser orderParser = new OrderParser();
 
         List<String> strings = IoLines.readFileForBase();
-        List<Customer> customers = parseStringOrder.OrderParsing(strings);
-        List<ByerWithReport> priceForList = priceManager.getPriceForList(customers);
+        List<Customer> customers = orderParser.OrderParsing(strings);
+        List<OrderReport> priceForList = priceManager.getPriceForList(customers);
         IoLines.writeFileForBase(priceForList);
     }
 }
