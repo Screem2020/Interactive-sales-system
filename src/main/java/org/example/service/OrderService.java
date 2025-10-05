@@ -1,43 +1,44 @@
-package org.example.price;
+package org.example.service;
 
 import org.example.report.OrderReport;
-import org.example.сustomer.Customer;
+import org.example.сustomer.Order;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 
-public class PriceManager {
+public class OrderService {
 
-    private List<OrderReport> listPrice = new ArrayList<>();
-    private static final int VALUE_PRICE_CEMENT = 500;
-    private static final int VALUE_DISCOUNT = 50;
-    private static final int VALUE_PACKAGING_CEMENT = 50;
-
-    public List<OrderReport> getPriceForList(List<Customer> listProduct) {
+    public List<OrderReport> getPriceForList(List<Order> listProduct, int valPriceCement,
+                                             int valueDiscount, int packagingCement, int stepDiscount) {
+        List<OrderReport> listPrice = new ArrayList<>();
         double discount = 0;
         HashSet<OrderReport> orderReports = new HashSet<>();
+        HashMap<String, OrderReport> ordersHashMap = new HashMap<>();
         double priceWithoutDiscount;
-        for (Customer customer : listProduct) {
-            if (customer.getWight() < 1) {
+        for (Order order : listProduct) {
+            if (order.getWight() < 1) {
                 throw new IllegalArgumentException("Incorrect volume of cement wight");
             }
-            if (VALUE_DISCOUNT > 0) {
+
+            if (valueDiscount > 0) {
                 try {
                     if (!(listPrice.isEmpty())) {
-                        if (VALUE_DISCOUNT >= 5) {
-                            discount = VALUE_DISCOUNT - 5 * listPrice.size();
+                        if (valueDiscount >= stepDiscount) {
+                            discount = valueDiscount - stepDiscount * listPrice.size();
                         } else throw new IllegalArgumentException();
                     }
                 } catch (IllegalArgumentException e) {
                     throw new IllegalArgumentException("Incorrect discount step");
                 }
             }
-            priceWithoutDiscount = (customer.getWight() / VALUE_PACKAGING_CEMENT) * VALUE_PRICE_CEMENT;
+            priceWithoutDiscount = (order.getWight() / packagingCement) * valPriceCement;
             double priceWithDiscount = priceWithoutDiscount - (discount * (priceWithoutDiscount / 100));
-            OrderReport otherReport = new OrderReport(customer.getNameCompany(), priceWithDiscount);
+            OrderReport otherReport = new OrderReport(order.getNameCompany(), priceWithDiscount);
+
             if (!(orderReports.add(otherReport))) {
                 for (int i = 0; i < listPrice.size(); i++) {
-                    if (listPrice.get(i).getNameCompany().equals(customer.getNameCompany())) {
+                    if (listPrice.get(i).getNameCompany().equals(order.getNameCompany())) {
                         double newPrice = listPrice.get(i).getPrice() + priceWithDiscount;
                         String nameCompany = listPrice.get(i).getNameCompany();
                         listPrice.add(new OrderReport(nameCompany, newPrice));

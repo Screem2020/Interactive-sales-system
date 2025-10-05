@@ -1,15 +1,14 @@
 package org.example.сustomer;
 
 import java.time.LocalDateTime;
-import java.util.Comparator;
 import java.util.Objects;
 
-public class Customer {
+public class Order {
     private String nameCompany;
     private double wight;
     private LocalDateTime localDateTime;
 
-    public Customer(String nameCompany, int wight, LocalDateTime localDateTime) {
+    public Order(String nameCompany, int wight, LocalDateTime localDateTime) {
         this.localDateTime = localDateTime;
         this.nameCompany = nameCompany;
         this.wight = wight;
@@ -35,8 +34,8 @@ public class Customer {
     @Override
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
-        Customer customer = (Customer) o;
-        return Objects.equals(nameCompany, customer.nameCompany);
+        Order order = (Order) o;
+        return Objects.equals(nameCompany, order.nameCompany);
     }
 
     @Override
