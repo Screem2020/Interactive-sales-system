@@ -10,7 +10,6 @@ import java.util.List;
 
 public class OrderManager {
     public void orderManager(File fileWrite, File fileRead, int priceCementVal, int discountVal, int packCement, int stepDiscount) {
-
         IoLines IoLines = new IoLines();
         OrderService orderService = new OrderService();
         OrderParser orderParser = new OrderParser();

@@ -1,12 +1,12 @@
 Recovery|113400.0
-Preparatory|128460.0
-Pyramid|65650.0
-Fossil|137200.0
-Mosque|248400.0
-Atomic|100000.0
-Electricity|31280.0
-Industrial|79200.0
-Carryover|281865.0
+Preparatory|214100.0
+Pyramid|101000.0
+Fossil|196000.0
+Mosque|331200.0
+Atomic|125000.0
+Electricity|36800.0
+Industrial|88000.0
+Carryover|296700.0
 Resident|56100.0
-Ancillary|315000.0
-Power Engineer|637340.0
+Ancillary|300000.0
+Power Engineer|420800.0

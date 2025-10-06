@@ -10,19 +10,19 @@ import java.util.List;
 public class IoLines {
 
     public List<String> readFileForBase(File file) {
-        List<String> arrList = new ArrayList<>();
+        List<String> lines = new ArrayList<>();
         try (FileReader fileReader = new FileReader(file);
-                 BufferedReader br = new BufferedReader(fileReader)) {
-                String stringLine = "";
-                while (br.ready()) {
-                    stringLine = br.readLine();
-                    arrList.add(stringLine);
-                }
-                br.close();
-                return arrList;
-            } catch (IOException e) {
-                throw new IORuntimeException(e);
+             BufferedReader br = new BufferedReader(fileReader)) {
+            String stringLine = "";
+            while (br.ready()) {
+                stringLine = br.readLine();
+                lines.add(stringLine);
             }
+            br.close();
+            return lines;
+        } catch (IOException e) {
+            throw new IORuntimeException(e);
+        }
     }
 
     public void writeFileForBase(List<OrderReport> customerList, File file) {
@@ -33,6 +33,7 @@ public class IoLines {
                 bufferedWriter.write("|");
                 bufferedWriter.write(String.valueOf(orderReport.getPrice()));
                 bufferedWriter.newLine();
+
             }
             bufferedWriter.flush();
         } catch (IOException e) {

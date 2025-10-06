@@ -22,7 +22,7 @@ public class OrderReport {
 
     @Override
     public String toString() {
-        return "ByerWithReport{" +
+        return "OrderReport{" +
                 "nameCompany='" + nameCompany + '\'' +
                 ", price=" + price +
                 '}';
