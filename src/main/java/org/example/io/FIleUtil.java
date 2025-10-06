@@ -7,7 +7,7 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class IoLines {
+public class FIleUtil {
 
     public List<String> readFileForBase(File file) {
         List<String> lines = new ArrayList<>();
@@ -18,7 +18,6 @@ public class IoLines {
                 stringLine = br.readLine();
                 lines.add(stringLine);
             }
-            br.close();
             return lines;
         } catch (IOException e) {
             throw new IORuntimeException(e);
@@ -35,7 +34,6 @@ public class IoLines {
                 bufferedWriter.newLine();
 
             }
-            bufferedWriter.flush();
         } catch (IOException e) {
             throw new IORuntimeException(e);
         }

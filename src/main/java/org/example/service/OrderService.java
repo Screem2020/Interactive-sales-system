@@ -7,39 +7,28 @@ import java.util.*;
 public class OrderService {
 
     public List<OrderReport> getPriceForList(List<Order> listProduct, int valPriceCement,
-                                             int valueDiscount, int packagingCement, int stepDiscount) {
-        List<OrderReport> listPrice = new ArrayList<>();
+                                             double valueDiscount, int stepDiscount) {
+        List<OrderReport> listPrice;
         HashMap<String, OrderReport> ordersHashMap = new HashMap<>();
-        double discount = 0;
+        double priceWithDiscount = 0;
         for (Order order : listProduct) {
-            if (order.getWight() < 1) {
-                throw new IllegalArgumentException("Incorrect volume of cement wight");
-            }
-            if (valueDiscount > 0) {
-                try {
-                    if (!(listPrice.isEmpty())) {
-                        if (valueDiscount >= stepDiscount) {
-                            discount = valueDiscount - stepDiscount * listPrice.size();
-                        } else throw new IllegalArgumentException();
-                    }
-                } catch (IllegalArgumentException e) {
-                    throw new IllegalArgumentException("Incorrect discount step");
+            if (valueDiscount >= 0) {
+                priceWithDiscount = order.getWight() * valPriceCement - (order.getWight() * valPriceCement * (valueDiscount / 100));
+                if (valueDiscount >= stepDiscount) {
+                    valueDiscount -= stepDiscount;
                 }
             }
-            double priceWithoutDiscount = (order.getWight() / packagingCement) * valPriceCement;
-            double priceWithDiscount = priceWithoutDiscount - (discount * (priceWithoutDiscount / 100));
             if (ordersHashMap.containsKey(order.getNameCompany())) {
-                double sumPrice;
                 OrderReport duplicateOrderReport = ordersHashMap.get(order.getNameCompany());
-                sumPrice = priceWithDiscount + duplicateOrderReport.getPrice();
-                listPrice.add(new OrderReport(order.getNameCompany(), sumPrice));
-                listPrice.remove(duplicateOrderReport);
+                double sumPrice = priceWithDiscount + duplicateOrderReport.getPrice();
+                ordersHashMap.put(order.getNameCompany(), new OrderReport(order.getNameCompany(), sumPrice));
             } else {
-                OrderReport orderReport = new OrderReport(order.getNameCompany(), priceWithDiscount);
-                listPrice.add(orderReport);
-                ordersHashMap.put(order.getNameCompany(), orderReport);
+                ordersHashMap.put(order.getNameCompany(), new OrderReport(order.getNameCompany(), priceWithDiscount));
             }
         }
+        listPrice = ordersHashMap.values()
+                .stream()
+                .toList();
         return listPrice;
     }
 }

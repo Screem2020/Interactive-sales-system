@@ -7,7 +7,7 @@ import java.io.File;
 public class Main {
     public static void main(String[] args) {
         new OrderManager().orderManager(new File("src/main/java/org/example/base/discount_order_customer.txt"),
-               new File("src/main/java/org/example/base/discount_day.txt"), 500, 0, 50, 5);
+               new File("src/main/java/org/example/base/discount_day.txt"), 10, 5, 5);
 
     }
 }

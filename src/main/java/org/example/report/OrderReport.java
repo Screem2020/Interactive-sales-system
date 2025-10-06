@@ -32,11 +32,11 @@ public class OrderReport {
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
         OrderReport that = (OrderReport) o;
-        return Objects.equals(nameCompany, that.nameCompany);
+        return Double.compare(price, that.price) == 0 && Objects.equals(nameCompany, that.nameCompany);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hashCode(nameCompany);
+        return Objects.hash(nameCompany, price);
     }
 }
