@@ -2,7 +2,6 @@ package org.example.io;
 
 import org.example.exception.IORuntimeException;
 import org.example.report.OrderReport;
-
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -26,13 +25,12 @@ public class FIleUtil {
 
     public void writeFileForBase(List<OrderReport> customerList, File file) {
         try (FileWriter fileWriter = new FileWriter(file);
-             BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);) {
+             BufferedWriter bufferedWriter = new BufferedWriter(fileWriter)) {
             for (OrderReport orderReport : customerList) {
                 bufferedWriter.write(orderReport.getNameCompany());
                 bufferedWriter.write("|");
                 bufferedWriter.write(String.valueOf(orderReport.getPrice()));
                 bufferedWriter.newLine();
-
             }
         } catch (IOException e) {
             throw new IORuntimeException(e);

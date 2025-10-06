@@ -1,7 +1,7 @@
 package org.example.service;
 
 import org.example.report.OrderReport;
-import org.example.сustomer.Order;
+import org.example.orderCompany.Order;
 import java.util.*;
 
 public class OrderService {

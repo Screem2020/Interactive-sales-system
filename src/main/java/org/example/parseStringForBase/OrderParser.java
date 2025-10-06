@@ -1,6 +1,6 @@
 package org.example.parseStringForBase;
 
-import org.example.сustomer.Order;
+import org.example.orderCompany.Order;
 
 import java.time.LocalDateTime;
 import java.util.*;

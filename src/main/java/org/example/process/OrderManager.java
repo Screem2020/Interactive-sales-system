@@ -4,7 +4,7 @@ import org.example.service.OrderService;
 import org.example.report.OrderReport;
 import org.example.parseStringForBase.OrderParser;
 import org.example.io.FIleUtil;
-import org.example.сustomer.Order;
+import org.example.orderCompany.Order;
 import java.io.File;
 import java.util.List;
 
@@ -13,7 +13,6 @@ public class OrderManager {
         FIleUtil FIleUtil = new FIleUtil();
         OrderService orderService = new OrderService();
         OrderParser orderParser = new OrderParser();
-
         List<String> strings = FIleUtil.readFileForBase(fileRead);
         List<Order> orders = orderParser.OrderParsing(strings);
         List<OrderReport> priceForList = orderService.getPriceForList(orders, priceCementVal, discountVal, stepDiscount);

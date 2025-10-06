@@ -1,4 +1,4 @@
-package org.example.сustomer;
+package org.example.orderCompany;
 
 import java.time.LocalDateTime;
 import java.util.Objects;
