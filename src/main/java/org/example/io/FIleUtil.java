@@ -6,7 +6,7 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
-
+public class FileUtil {
     public List<String> readFileForBase(File file) {
         List<String> lines = new ArrayList<>();
         try (FileReader fileReader = new FileReader(file);
@@ -25,7 +25,8 @@ import java.util.List;
     public void writeFileForBase(List<OrderReport> customerList, File file) {
         try (FileWriter fileWriter = new FileWriter(file);
             for (OrderReport orderReport : customerList) {
-                bufferedWriter.write(orderReport.getNameCompany());
+            BufferedWriter bufferedWriter = new BufferedWriter();
+            bufferedWriter.write(orderReport.getNameCompany());
                 bufferedWriter.write("|");
                 bufferedWriter.write(String.valueOf(orderReport.getPrice()));
                 bufferedWriter.newLine();
@@ -33,5 +34,5 @@ import java.util.List;
         } catch (IOException e) {
             throw new IORuntimeException(e);
         }
-    }
+}
 }
