@@ -8,7 +8,6 @@ public class OrderService {
 
     public List<OrderReport> getPriceForList(List<Order> listProduct, int valPriceCement,
                                              double valueDiscount, int stepDiscount) {
-        List<OrderReport> listPrice;
         HashMap<String, OrderReport> ordersHashMap = new HashMap<>();
         double priceWithDiscount = 0;
         for (Order order : listProduct) {
@@ -18,18 +17,17 @@ public class OrderService {
                     valueDiscount -= stepDiscount;
                 }
             }
+
             if (ordersHashMap.containsKey(order.getNameCompany())) {
-                OrderReport duplicateOrderReport = ordersHashMap.get(order.getNameCompany());
-                double sumPrice = priceWithDiscount + duplicateOrderReport.getPrice();
-                ordersHashMap.put(order.getNameCompany(), new OrderReport(order.getNameCompany(), sumPrice));
+                ordersHashMap.merge(order.getNameCompany(), new OrderReport(order.getNameCompany(),
+                        priceWithDiscount + ordersHashMap.get(order.getNameCompany()).getPrice()), (a,b) -> b);
             } else {
                 ordersHashMap.put(order.getNameCompany(), new OrderReport(order.getNameCompany(), priceWithDiscount));
             }
         }
-        listPrice = ordersHashMap.values()
+        return ordersHashMap.values()
                 .stream()
                 .toList();
-        return listPrice;
     }
 }
 

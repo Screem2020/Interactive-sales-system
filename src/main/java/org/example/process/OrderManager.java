@@ -9,10 +9,8 @@ import java.io.File;
 import java.util.List;
 
 public class OrderManager {
-    public void orderManager(File fileWrite, File fileRead, int priceCementVal, int discountVal, int stepDiscount) {
-        FIleUtil FIleUtil = new FIleUtil();
-        OrderService orderService = new OrderService();
-        OrderParser orderParser = new OrderParser();
+    public void orderManager(FIleUtil FIleUtil, OrderService orderService,OrderParser orderParser,
+                             File fileWrite, File fileRead, int priceCementVal, int discountVal, int stepDiscount) {
         List<String> strings = FIleUtil.readFileForBase(fileRead);
         List<Order> orders = orderParser.OrderParsing(strings);
         List<OrderReport> priceForList = orderService.getPriceForList(orders, priceCementVal, discountVal, stepDiscount);

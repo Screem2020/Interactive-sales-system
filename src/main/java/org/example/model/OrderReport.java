@@ -1,7 +1,5 @@
 package org.example.model;
 
-import java.util.Objects;
-
 public class OrderReport {
 
     private String nameCompany;
@@ -26,17 +24,5 @@ public class OrderReport {
                 "nameCompany='" + nameCompany + '\'' +
                 ", price=" + price +
                 '}';
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (o == null || getClass() != o.getClass()) return false;
-        OrderReport that = (OrderReport) o;
-        return Objects.equals(nameCompany, that.nameCompany);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hashCode(nameCompany);
     }
 }
