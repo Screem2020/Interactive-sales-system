@@ -1,19 +1,20 @@
 package org.example.io;
 
 import org.example.exception.IORuntimeException;
-import org.example.report.OrderReport;
+import org.example.model.OrderReport;
+
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class FileUtil {
+public class FIleUtil {
     public List<String> readFileForBase(File file) {
-        List<String> lines = new ArrayList<>();
+        ArrayList<String> lines = new ArrayList<>();
         try (FileReader fileReader = new FileReader(file);
-             BufferedReader br = new BufferedReader(fileReader)) {
+             BufferedReader bufferedReader = new BufferedReader(fileReader)) {
             String stringLine = "";
-            while (br.ready()) {
-                stringLine = br.readLine();
+            while (bufferedReader.ready()) {
+                stringLine = bufferedReader.readLine();
                 lines.add(stringLine);
             }
             return lines;
@@ -22,11 +23,11 @@ public class FileUtil {
         }
     }
 
-    public void writeFileForBase(List<OrderReport> customerList, File file) {
-        try (FileWriter fileWriter = new FileWriter(file);
-            for (OrderReport orderReport : customerList) {
-            BufferedWriter bufferedWriter = new BufferedWriter();
-            bufferedWriter.write(orderReport.getNameCompany());
+    public void writeFileForBase(List<OrderReport> orderReportList, File file) {
+        try(FileWriter fileWriter = new FileWriter(file);
+            BufferedWriter bufferedWriter = new BufferedWriter(fileWriter)) {
+            for (OrderReport orderReport : orderReportList) {
+                bufferedWriter.write(orderReport.getNameCompany());
                 bufferedWriter.write("|");
                 bufferedWriter.write(String.valueOf(orderReport.getPrice()));
                 bufferedWriter.newLine();
@@ -34,5 +35,5 @@ public class FileUtil {
         } catch (IOException e) {
             throw new IORuntimeException(e);
         }
-}
+    }
 }
