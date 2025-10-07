@@ -1,5 +1,3 @@
-package org.example.report;
-
 import java.util.Objects;
 
 public class OrderReport {

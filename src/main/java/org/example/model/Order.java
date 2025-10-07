@@ -1,9 +1,4 @@
-<<<<<<<< HEAD:src/main/java/org/example/model/Order.java
 package org.example.model;
-========
-package org.example.orderCompany;
->>>>>>>> 7d81e59e374205f3dc826a7f02bc8a1013851e86:src/main/java/org/example/orderCompany/Order.java
-
 import java.time.LocalDateTime;
 
 public class Order {
