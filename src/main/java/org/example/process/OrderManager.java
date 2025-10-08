@@ -9,11 +9,20 @@ import java.io.File;
 import java.util.List;
 
 public class OrderManager {
-    public void orderManager(FIleUtil FIleUtil, OrderService orderService,OrderParser orderParser,
-                             File fileWrite, File fileRead, int priceCementVal, int discountVal, int stepDiscount) {
-        List<String> strings = FIleUtil.readFileForBase(fileRead);
+    private final FIleUtil fIleUtil;
+    private final OrderService orderService;
+    private final OrderParser orderParser;
+
+    public OrderManager(FIleUtil fIleUtil, OrderService orderService, OrderParser orderParser) {
+        this.fIleUtil = fIleUtil;
+        this.orderService = orderService;
+        this.orderParser = orderParser;
+    }
+
+    public void orderManager(File fileWrite, File fileRead, int priceCementVal, int discountVal, int stepDiscount) {
+        List<String> strings = fIleUtil.readFileForBase(fileRead);
         List<Order> orders = orderParser.OrderParsing(strings);
         List<OrderReport> priceForList = orderService.getPriceForList(orders, priceCementVal, discountVal, stepDiscount);
-        FIleUtil.writeFileForBase(priceForList, fileWrite);
+        fIleUtil.writeFileForBase(priceForList, fileWrite);
     }
 }

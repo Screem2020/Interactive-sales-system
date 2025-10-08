@@ -19,8 +19,8 @@ public class OrderService {
             }
 
             if (ordersHashMap.containsKey(order.getNameCompany())) {
-                ordersHashMap.merge(order.getNameCompany(), new OrderReport(order.getNameCompany(),
-                        priceWithDiscount + ordersHashMap.get(order.getNameCompany()).getPrice()), (a,b) -> b);
+                ordersHashMap.merge( order.getNameCompany(), new OrderReport(order.getNameCompany(), priceWithDiscount),
+                        (existing, newValue) -> new OrderReport( existing.getNameCompany(), existing.getPrice() + newValue.getPrice()));
             } else {
                 ordersHashMap.put(order.getNameCompany(), new OrderReport(order.getNameCompany(), priceWithDiscount));
             }
