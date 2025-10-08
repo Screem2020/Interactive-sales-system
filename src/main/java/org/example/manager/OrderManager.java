@@ -1,4 +1,4 @@
-package org.example.process;
+package org.example.manager;
 
 import org.example.io.FIleUtil;
 import org.example.service.OrderService;
@@ -19,7 +19,7 @@ public class OrderManager {
         this.orderParser = orderParser;
     }
 
-    public void orderManager(File fileWrite, File fileRead, int priceCementVal, int discountVal, int stepDiscount) {
+    public void process(File fileWrite, File fileRead, int priceCementVal, int discountVal, int stepDiscount) {
         List<String> strings = fIleUtil.readFileForBase(fileRead);
         List<Order> orders = orderParser.OrderParsing(strings);
         List<OrderReport> priceForList = orderService.getPriceForList(orders, priceCementVal, discountVal, stepDiscount);
