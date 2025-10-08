@@ -2,6 +2,7 @@ package org.example.service;
 
 import org.example.model.OrderReport;
 import org.example.model.Order;
+
 import java.util.*;
 
 public class OrderService {
@@ -17,13 +18,8 @@ public class OrderService {
                     valueDiscount -= stepDiscount;
                 }
             }
-
-            if (ordersHashMap.containsKey(order.getNameCompany())) {
-                ordersHashMap.merge( order.getNameCompany(), new OrderReport(order.getNameCompany(), priceWithDiscount),
-                        (existing, newValue) -> new OrderReport( existing.getNameCompany(), existing.getPrice() + newValue.getPrice()));
-            } else {
-                ordersHashMap.put(order.getNameCompany(), new OrderReport(order.getNameCompany(), priceWithDiscount));
-            }
+            ordersHashMap.merge(order.getNameCompany(), new OrderReport(order.getNameCompany(), priceWithDiscount),
+                    (existing, newValue) -> new OrderReport(existing.getNameCompany(), existing.getPrice() + newValue.getPrice()));
         }
         return ordersHashMap.values()
                 .stream()
