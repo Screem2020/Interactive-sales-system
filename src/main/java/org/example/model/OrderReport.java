@@ -20,9 +20,6 @@ public class OrderReport {
 
     @Override
     public String toString() {
-        return "OrderReport{" +
-                "nameCompany='" + nameCompany + '\'' +
-                ", price=" + price +
-                '}';
+        return nameCompany + "|" + price + "\n";
     }
 }
