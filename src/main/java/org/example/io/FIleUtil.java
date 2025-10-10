@@ -1,6 +1,7 @@
 package org.example.io;
 
 import org.example.exception.IORuntimeException;
+import org.example.model.Order;
 import org.example.model.OrderReport;
 
 import java.io.*;
@@ -26,13 +27,9 @@ public class FIleUtil {
     public void writeFileForBase(List<OrderReport> orderReportList, File file) {
         try (FileWriter fileWriter = new FileWriter(file);
              BufferedWriter bufferedWriter = new BufferedWriter(fileWriter)) {
-            orderReportList.forEach(a -> {
-                try {
-                    bufferedWriter.write(a.toString());
-                } catch (IOException e) {
-                    throw new RuntimeException(e);
-                }
-            });
+            for (OrderReport order : orderReportList) {
+                bufferedWriter.write(order.toString());
+            }
         } catch (IOException e) {
             throw new IORuntimeException(e);
         }

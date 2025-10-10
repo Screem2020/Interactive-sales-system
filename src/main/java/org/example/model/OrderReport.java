@@ -2,16 +2,16 @@ package org.example.model;
 
 public class OrderReport {
 
-    private String nameCompany;
+    private String companyName;
     private double price;
 
-    public OrderReport(String nameCompany, double price) {
-        this.nameCompany = nameCompany;
+    public OrderReport(String companyName, double price) {
+        this.companyName = companyName;
         this.price = price;
     }
 
-    public String getNameCompany() {
-        return nameCompany;
+    public String getCompanyName() {
+        return companyName;
     }
 
     public double getPrice() {
@@ -20,6 +20,6 @@ public class OrderReport {
 
     @Override
     public String toString() {
-        return nameCompany + "|" + price + "\n";
+        return companyName + "|" + price + "\n";
     }
 }

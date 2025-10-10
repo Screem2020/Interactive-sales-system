@@ -19,7 +19,7 @@ public class OrderService {
                 }
             }
             ordersHashMap.merge(order.getNameCompany(), new OrderReport(order.getNameCompany(), priceWithDiscount),
-                    (existing, newValue) -> new OrderReport(existing.getNameCompany(), existing.getPrice() + newValue.getPrice()));
+                    (existing, newValue) -> new OrderReport(existing.getCompanyName(), existing.getPrice() + newValue.getPrice()));
         }
         return ordersHashMap.values()
                 .stream()
