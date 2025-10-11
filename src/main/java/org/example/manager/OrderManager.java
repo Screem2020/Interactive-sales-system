@@ -1,10 +1,7 @@
 package org.example.manager;
 
 import org.example.io.FIleUtil;
-import org.example.parser.NoneExtensionOrderParser2;
-import org.example.parser.OrderParser;
 import org.example.parser.OrderParserRegister;
-import org.example.parser.StringOrderParser;
 import org.example.service.OrderService;
 import org.example.model.OrderReport;
 import org.example.model.Order;
