@@ -1,10 +1,9 @@
 package org.example.manager;
 
 import org.example.io.FIleUtil;
-import org.example.parser.AdapterOrderParser;
+import org.example.parser.AdapterTextOrderParser;
 import org.example.service.OrderService;
 import org.example.model.OrderReport;
-import org.example.parser.OrderParser;
 import org.example.model.Order;
 import java.io.File;
 import java.util.List;
@@ -12,9 +11,9 @@ import java.util.List;
 public class OrderManager {
     private final FIleUtil fIleUtil;
     private final OrderService orderService;
-    private final AdapterOrderParser orderParser;
+    private final AdapterTextOrderParser orderParser;
 
-    public OrderManager(FIleUtil fIleUtil, OrderService orderService, AdapterOrderParser orderParser) {
+    public OrderManager(FIleUtil fIleUtil, OrderService orderService, AdapterTextOrderParser orderParser) {
         this.fIleUtil = fIleUtil;
         this.orderService = orderService;
         this.orderParser = orderParser;
