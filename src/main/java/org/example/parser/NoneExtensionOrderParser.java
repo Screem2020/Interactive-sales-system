@@ -6,7 +6,7 @@ import java.util.List;
 public class NoneExtensionOrderParser implements OrderParser{
 
     @Override
-    public List<Order> orderParsing(List<String> stringList) {
-        return new OrderMapper("#").mapper(stringList);
+    public List<Order> parse(List<String> stringList) {
+        return new OrderMapper().map(stringList, "#");
     }
 }

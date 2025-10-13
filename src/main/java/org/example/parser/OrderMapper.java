@@ -8,17 +8,13 @@ import java.util.List;
 
 public class OrderMapper {
 
-    private final String delimeitr;
-
-    public OrderMapper(String delimeitr) {
-        this.delimeitr = delimeitr;
+    public List<Order> map(List<String> list, String delimeitr) {
+        return list.stream()
+                .map(line -> toOrdersPars(line, delimeitr))
+                .sorted(Comparator.comparing(Order::getLocalDateTime))
+                .toList();
     }
-
-    public List<Order> mapper(List<String> list) {
-        return list.stream().map(this::toOrders).sorted(Comparator.comparing(Order::getLocalDateTime)).toList();
-    }
-
-    public Order toOrders(String line) {
+    public Order toOrdersPars(String line, String delimeitr) {
         String[] split = line.split(delimeitr);
         return new Order(split[1],
                 Integer.parseInt(split[2]),

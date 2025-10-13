@@ -4,5 +4,5 @@ import org.example.model.Order;
 import java.util.List;
 
 public interface OrderParser {
-    List<Order> orderParsing(List<String> stringList);
+    List<Order> parse(List<String> stringList);
 }
