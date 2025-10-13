@@ -7,6 +7,6 @@ public class NoneExtensionOrderParser implements OrderParser{
 
     @Override
     public List<Order> orderParsing(List<String> stringList) {
-        return new OrderMapper("#").OrderMapper(stringList);
+        return new OrderMapper("#").mapper(stringList);
     }
 }

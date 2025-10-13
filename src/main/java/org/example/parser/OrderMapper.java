@@ -14,7 +14,7 @@ public class OrderMapper {
         this.delimeitr = delimeitr;
     }
 
-    public List<Order> OrderMapper(List<String> list) {
+    public List<Order> mapper(List<String> list) {
         return list.stream().map(this::toOrders).sorted(Comparator.comparing(Order::getLocalDateTime)).toList();
     }
 
