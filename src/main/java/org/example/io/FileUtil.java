@@ -7,7 +7,7 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class FIleUtil {
+public class FileUtil {
     public List<String> readFileForBase(File file) {
         ArrayList<String> lines = new ArrayList<>();
         try (FileReader fileReader = new FileReader(file);

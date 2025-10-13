@@ -6,7 +6,7 @@ import java.util.List;
 
 public class OrderRegister {
 
-    public List<Order> registrCheck(File fileRead, List<String> stringList) {
+    public List<Order> registrCheckOrderParser(File fileRead, List<String> stringList) {
         String[] split = fileRead.getName().split("\\.");
         return split.length > 1 ? new TxtOrderParsing().parse(stringList) : new NoneExtensionOrderParser().parse(stringList);
     }
