@@ -10,7 +10,7 @@ public class Main {
     public static void main(String[] args) {
         new OrderManager(new FIleUtil(), new OrderService(), new OrderParserRegister())
                 .process(new File("base/discount_order_customer.txt"),
-               new File("base/discount_day"), 10, 50, 5);
+               new File("base/discount_day.txt"), 10, 50, 5);
 
     }
 }
