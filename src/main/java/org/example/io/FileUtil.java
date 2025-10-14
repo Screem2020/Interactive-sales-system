@@ -2,6 +2,7 @@ package org.example.io;
 
 import org.example.exception.IORuntimeException;
 import org.example.model.OrderReport;
+
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -26,7 +27,11 @@ public class FileUtil {
         try (FileWriter fileWriter = new FileWriter(file);
              BufferedWriter bufferedWriter = new BufferedWriter(fileWriter)) {
             for (OrderReport order : orderReportList) {
-                bufferedWriter.write(order.toString());
+                if (order != null) {
+                    bufferedWriter.write(order.toString());
+                } else {
+                    System.out.println("Order is null");
+                }
             }
         } catch (IOException e) {
             throw new IORuntimeException(e);
